@@ -1,0 +1,21 @@
+{
+  "name": "LineMessagingAPI",
+  "keywords": "Naver, Line, Messaging, API, Notify, Message, Bot",
+  "description": "Simple replacement from Line Notify to Line Messaging API support only plain text",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/kkeonline/LineMessagingAPI.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Korakot Eamopas",
+      "email": "kkeonline@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "version": "1.0.0",
+  "frameworks": "arduino",
+  "platforms": "espressif"
+}
