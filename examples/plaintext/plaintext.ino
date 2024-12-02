@@ -38,13 +38,13 @@ LINE.begin(LINE_TOKEN, LINE_USER);
     Serial.println(" Successful");
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
-    LINE.notify("ESP8266 MessagingAPI\\nRunning IP:" + WiFi.localIP().toString());
+    LINE.notify("Test \"Message\" from\t 'ESP8266'\r\nRunning IP:" + WiFi.localIP().toString())) {
   }
 }
 
 void loop(){
   delay(20000);
-    if (LINE.notify("Test Message from ESP8266\\nRunning IP:" + WiFi.localIP().toString())) {
+    if (LINE.notify("Test \"Message\" from\t 'ESP8266'\r\nRunning IP:" + WiFi.localIP().toString())) {
         Serial.println("Send Message successful");
     } else {
         Serial.println("Error sending message, status: " + LINE.status_code);
