@@ -14,7 +14,6 @@ class LineMessagingAPI{
   private:
     String _TOKEN = "";
     String _USERID = "";
-//  String _API_URL = "https://api.line.me/v2/bot/message/push";
     String _API_HOST = "api.line.me";
     String _API_PATH = "/v2/bot/message/push";
 	String escapeStr(String S);
