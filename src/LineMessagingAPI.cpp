@@ -25,6 +25,14 @@ void LineMessagingAPI::setUserID(String ReceiverUserID) {
     this->_USERID = ReceiverUserID;
 }
 
+String LineMessagingAPI::escapeStr(String S) {
+  S.replace("\t", "\\t");
+  S.replace("\r", "\\r");
+  S.replace("\n", "\\n");
+  S.replace("\"", "\\\"");
+  return(S);
+}
+
 bool LineMessagingAPI::notify(String message) {
     this->status_code=0;
     if (message.length() <= 0) {
@@ -43,7 +51,7 @@ bool LineMessagingAPI::notify(String message) {
    https.begin(client, this->_API_HOST, 443, this->_API_PATH, true);
    https.addHeader("Content-Type", "application/json");
    https.addHeader("Authorization", this->_TOKEN);
-   this->status_code = https.POST("{\"to\":\"" + this->_USERID + "\",\"messages\":[{\"type\":\"text\",\"text\":\"" + message + "\"}]}");
+   this->status_code = https.POST("{\"to\":\"" + this->_USERID + "\",\"messages\":[{\"type\":\"text\",\"text\":\"" + this->escapeStr(message) + "\"}]}");
    https.end();
    client.stop();
    return(this->status_code==200);
