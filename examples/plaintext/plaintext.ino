@@ -1,3 +1,29 @@
+/*
+LineMessagingAPI
+Simple replacement from Line Notify to Line Messaging API support only plain text
+
+OLD code:
+#include <TridentTD_LineNotify.h>
+#define LINE_TOKEN "************************"
+LINE.setToken(LINE_TOKEN);
+LINE.notify("your message");
+
+NEW code:
+#include <LineMessagingAPI.h>
+const char* LINE_TOKEN = "***********************************************************";
+const char* LINE_USER = "*************************";
+LINE.setToken(LINE_TOKEN);
+LINE.setUserID(LINE_USER);
+LINE.notify("your message");
+
+*Note:
+To use Line MessagingAPI you have to create Line OA account via https:/manager.line.biz then enable MessagingAPI
+then create "Channel access token" to use like old Token from https://developers.line.biz/console/
+then you have to know the receiver UserID or GroupID to send message to (open https://webhook.site/ and copy unique url to Line developper console
+then send message from the user to Line OA then you will know that UserID from the Log)
+*/
+
+
 #include <LineMessagingAPI.h>
 
 const char* LINE_TOKEN = "*******=";
