@@ -26,6 +26,7 @@ void LineMessagingAPI::setUserID(String ReceiverUserID) {
 }
 
 String LineMessagingAPI::escapeStr(String S) {
+  S.replace("\\", "\\\\");
   S.replace("\t", "\\t");
   S.replace("\r", "\\r");
   S.replace("\n", "\\n");
