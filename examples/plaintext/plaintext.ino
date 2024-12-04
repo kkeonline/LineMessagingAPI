@@ -1,6 +1,6 @@
 /*
-LineMessagingAPI
-Simple replacement from Line Notify to Line Messaging API support only plain text
+Line Messaging API Library for ESP32 ESP8266
+Simple replacement from Line Notify to Line Messaging API for ESP32 ESP8266 to send plain text message
 
 OLD code:
 #include <TridentTD_LineNotify.h>
@@ -22,7 +22,6 @@ then create "Channel access token" to use like old Token from https://developers
 then you have to know the receiver UserID or GroupID to send message to (open https://webhook.site/ and copy unique url to Line developper console
 then send message from the user to Line OA then you will know that UserID from the Log)
 */
-
 
 #include <LineMessagingAPI.h>
 
