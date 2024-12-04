@@ -1,7 +1,7 @@
 {
   "name": "LineMessagingAPI",
-  "keywords": "Naver, Line, Messaging, API, Notify, Message, Bot",
-  "description": "Simple replacement from Line Notify to Line Messaging API support only plain text",
+  "keywords": "Naver, Line, LineOA, Messaging, API, Notify, Message, Bot, esp32, esp8266, arduino",
+  "description": "Simple replacement from Line Notify to Line Messaging API for ESP32 ESP8266 to send plain text message",
   "repository":
   {
     "type": "git",
@@ -15,7 +15,7 @@
       "maintainer": true
     }
   ],
-  "version": "1.0.2",
+  "version": "1.1.0",
   "frameworks": "arduino",
-  "platforms": "espressif"
+  "platforms": "espressif32, espressif8266"
 }
