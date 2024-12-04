@@ -1,14 +1,22 @@
 /*
-Line Messaging API for ESP8266
+Line Messaging API Library for ESP32 ESP8266
+Simple replacement from Line Notify to Line Messaging API for ESP32 ESP8266 to send plain text message
 */
 
 #ifndef LineMessagingAPI_H
 #define LineMessagingAPI_H
 
+#ifdef ESP32
+  #include <WiFi.h>
+  #include <HTTPClient.h>
+  #include <NetworkClientSecure.h>
+  #define HARDWARE "esp32"
+#else
   #include <ESP8266WiFi.h>
   #include <ESP8266HTTPClient.h>
   #include <WiFiClientSecure.h>
   #define HARDWARE "esp8266"
+#endif
 
 class LineMessagingAPI{
   private:

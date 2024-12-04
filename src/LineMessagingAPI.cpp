@@ -1,5 +1,6 @@
 /*
-Line Messaging API for ESP8266
+Line Messaging API Library for ESP32 ESP8266
+Simple replacement from Line Notify to Line Messaging API for ESP32 ESP8266 to send plain text message
 */
 
 #include "LineMessagingAPI.h"
@@ -46,16 +47,21 @@ bool LineMessagingAPI::notify(String message) {
         return false;
     }
 
-   WiFiClientSecure client;
-   HTTPClient https;
-   client.setInsecure();
-   https.begin(client, this->_API_HOST, 443, this->_API_PATH, true);
-   https.addHeader("Content-Type", "application/json");
-   https.addHeader("Authorization", this->_TOKEN);
-   this->status_code = https.POST("{\"to\":\"" + this->_USERID + "\",\"messages\":[{\"type\":\"text\",\"text\":\"" + this->escapeStr(message) + "\"}]}");
-   https.end();
-   client.stop();
-   return(this->status_code==200);
+	#ifdef ESP32
+	  NetworkClientSecure client;
+	#else
+	  WiFiClientSecure client;
+	#endif
+
+    HTTPClient https;
+    client.setInsecure();
+    https.begin(client, this->_API_HOST, 443, this->_API_PATH, true);
+    https.addHeader("Content-Type", "application/json");
+    https.addHeader("Authorization", this->_TOKEN);
+    this->status_code = https.POST("{\"to\":\"" + this->_USERID + "\",\"messages\":[{\"type\":\"text\",\"text\":\"" + this->escapeStr(message) + "\"}]}");
+    https.end();
+    client.stop();
+    return(this->status_code==200);
 }
 
 LineMessagingAPI LINE;
