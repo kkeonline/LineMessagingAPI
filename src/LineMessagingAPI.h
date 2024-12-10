@@ -22,9 +22,14 @@ class LineMessagingAPI{
   private:
     String _TOKEN = "";
     String _USERID = "";
-    String _API_HOST = "api.line.me";
-    String _API_PATH = "/v2/bot/message/push";
+    String _MULTICAST_USERIDS = "";
+    const String _API_HOST = "api.line.me";
+    const String _API_BASE_PATH = "/v2/bot/message";
+    const String _API_PUSH_PATH = _API_BASE_PATH + "/push";
+    const String _API_MULTICAST_PATH = _API_BASE_PATH + "/multicast";
+    const String _API_BROADCAST_PATH = _API_BASE_PATH + "/broadcast";
 	String escapeStr(String S);
+    bool send(String apipath, String payload);
 
   public:
     int status_code = 0;
@@ -34,8 +39,14 @@ class LineMessagingAPI{
     void begin(String Channel_access_token = "");
     void begin(String Channel_access_token = "", String ReceiverUserID = "");
     void setToken(String Channel_access_token);
-    void setUserID(String ReceiverUserID);
+    void setUserID(String ReceiverUserID); // String UserID = "userid1";
+    void setMulticastUserIDs(String ReceiverUserIDs); // String UserIDs = "userid1, userid2, userid3";
+    bool push(String message);
+    bool push(String message, String ReceiverUserID);
     bool notify(String message);
+    bool multicast(String message);
+    bool multicast(String message, String ReceiverUserIDs);
+    bool broadcast(String message);
 };
 
 extern LineMessagingAPI LINE;
